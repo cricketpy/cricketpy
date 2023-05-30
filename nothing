@@ -1,0 +1,33 @@
+const textContainer = document.querySelector('.matrix-text');
+
+// Configuración de los símbolos
+const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+const symbolCount = 150;
+const animationInterval = 50; // Intervalo de animación en milisegundos
+
+let animationIntervalId;
+
+// Función para generar un símbolo aleatorio
+function getRandomSymbol() {
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+// Función para generar una cadena de símbolos
+function generateSymbolString() {
+  let symbolString = '';
+  for (let i = 0; i < symbolCount; i++) {
+    symbolString += getRandomSymbol();
+  }
+  return symbolString;
+}
+
+// Función para animar el efecto Matrix
+function animateMatrix() {
+  animationIntervalId = setInterval(() => {
+    const symbolString = generateSymbolString();
+    textContainer.textContent = symbolString;
+  }, animationInterval);
+}
+
+// Iniciar la animación
+animateMatrix();
